@@ -60,3 +60,48 @@ export const deleteCustomerService = async (id: number) => {
     await db.delete(CustomerTable).where(eq(CustomerTable.customerID, id)).returning();
     return "Customer deleted successfully";
 }
+
+export const getCustomerWithBookingsAndPaymentsService = async (id: number) => {
+    return await db.query.CustomerTable.findFirst({
+        where: eq(CustomerTable.customerID, id),
+        columns: {
+            firstName: true,
+            lastName: true
+        },
+        with: {
+            bookings: {
+                columns: {
+                    bookingID: true,
+                    rentalStartDate: true,
+                    rentalEndDate: true,
+                    totalAmount: true
+                },
+                with: {
+                    payments: true 
+                }
+            }
+        }
+    });
+};
+
+export const getAllCustomersWithBookingsAndPaymentsService = async () => {
+    return await db.query.CustomerTable.findMany({
+        columns: {
+            firstName: true,
+            lastName: true
+        },
+        with: {
+            bookings: {
+                columns: {
+                    bookingID: true,
+                    rentalStartDate: true,
+                    rentalEndDate: true,
+                    totalAmount: true
+                },
+                with: {
+                    payments: true
+                }
+            }
+        }
+    });
+};

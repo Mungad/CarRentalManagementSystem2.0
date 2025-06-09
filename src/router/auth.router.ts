@@ -5,7 +5,9 @@ import { loginCustomerController,
         getCustomerController, 
         getCustomerByIdController, 
         updateCustomerController, 
-        deleteCustomerController } from '../controllers/auth.controller';
+        deleteCustomerController, 
+        getCustomerBookingsAndPaymentsController,
+        getAllCustomersBookingsAndPaymentsController   } from '../controllers/auth.controller';
 import { adminRoleAuth, bothRoleAuth } from "../middleware/bearerAuth";
 
 const customer = (app: Express) => {
@@ -88,6 +90,25 @@ const customer = (app: Express) => {
                 await deleteCustomerController(req, res);
             } catch (error: any) {
                 next(error); // Passes the error to the next middleware
+            }
+        }
+    ),
+    app.route('/customer/bookings-payments/:id').get(
+        async (req, res, next) => {
+            try {
+                await getCustomerBookingsAndPaymentsController(req, res);
+            } catch (error: any) {
+                next(error);
+            }
+        }
+    )
+
+    app.route('/customers/bookings-payments').get(
+        async (req, res, next) => {
+            try {
+                await getAllCustomersBookingsAndPaymentsController(req, res);
+            } catch (error: any) {
+                next(error);
             }
         }
     )

@@ -95,6 +95,12 @@ Content-Type: application/json
 ### Delete a Customer
 DELETE http://localhost:8081/customer/4
 
+### Get customer bookings with payments by ID
+GET http://localhost:8081/customer/bookings-payments/1
+
+### Get All customer bookings with payments
+GET http://localhost:8081/customers/bookings-payments
+
 ### LOCATION TABLE 
 
 ### Create a Location
