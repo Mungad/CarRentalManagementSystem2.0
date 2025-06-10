@@ -3,7 +3,8 @@ import { MaintenanceTable } from "../Drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const createMaintenanceService = async (data: any) => {
-  return await db.insert(MaintenanceTable).values(data).returning();
+  await db.insert(MaintenanceTable).values(data).returning();
+  return "Maintenance added successfully";
 };
 
 export const getAllMaintenanceService = async () => {
@@ -11,14 +12,25 @@ export const getAllMaintenanceService = async () => {
 };
 
 export const getMaintenanceByIdService = async (id: number) => {
-  const result = await db.select().from(MaintenanceTable).where(eq(MaintenanceTable.maintenanceID, id));
-  return result[0];
+  const result = await db.query.MaintenanceTable.findFirst({
+    where: eq(MaintenanceTable.maintenanceID, id),
+  });
+  return result;
 };
 
 export const updateMaintenanceService = async (id: number, data: any) => {
-  return await db.update(MaintenanceTable).set(data).where(eq(MaintenanceTable.maintenanceID, id)).returning();
+  await db
+    .update(MaintenanceTable)
+    .set(data)
+    .where(eq(MaintenanceTable.maintenanceID, id))
+    .returning();
+  return "Maintenance updated successfully";
 };
 
 export const deleteMaintenanceService = async (id: number) => {
-  return await db.delete(MaintenanceTable).where(eq(MaintenanceTable.maintenanceID, id));
+  const deleted = await db
+    .delete(MaintenanceTable)
+    .where(eq(MaintenanceTable.maintenanceID, id))
+    .returning();
+  return deleted[0];
 };

@@ -2,9 +2,13 @@ import { eq } from "drizzle-orm";
 import db from "../Drizzle/db";
 import { TICar, CarTable } from "../Drizzle/schema";
 
-
 export const createCarService = async (car: TICar) => {
-  await db.insert(CarTable).values(car).returning();
+  const inserted = await db.insert(CarTable).values(car).returning();
+
+  if (!inserted || inserted.length === 0) {
+    return null;
+  }
+
   return "Car added successfully";
 };
 
