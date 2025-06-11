@@ -9,7 +9,7 @@ import db from "../../Drizzle/db";
 import { CarTable } from "../../Drizzle/schema";
 
 // mock the modules
-jest.mock("../Drizzle/db", () => ({
+jest.mock("../../Drizzle/db", () => ({
   insert: jest.fn(),
   update: jest.fn(),
   delete: jest.fn(),

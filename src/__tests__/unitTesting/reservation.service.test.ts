@@ -10,7 +10,7 @@ import {
 import db from "../../Drizzle/db";
 import { ReservationTable } from "../../Drizzle/schema";
 
-jest.mock("../Drizzle/db", () => ({
+jest.mock("../../Drizzle/db", () => ({
   insert: jest.fn(),
   select: jest.fn(),
   update: jest.fn(),

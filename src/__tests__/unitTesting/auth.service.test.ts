@@ -13,7 +13,7 @@ import {
 import db from "../../Drizzle/db";
 import { CustomerTable, TICustomer, TSCustomer } from "../../Drizzle/schema";
 
-jest.mock("../Drizzle/db", () => ({
+jest.mock("../../Drizzle/db", () => ({
   insert: jest.fn(),
   update: jest.fn(),
   delete: jest.fn(),

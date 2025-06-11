@@ -9,7 +9,7 @@ import {
 import db from "../../Drizzle/db";
 import { InsuranceTable } from "../../Drizzle/schema";
 
-jest.mock("../Drizzle/db", () => ({
+jest.mock("../../Drizzle/db", () => ({
   insert: jest.fn(),
   update: jest.fn(),
   delete: jest.fn(),
