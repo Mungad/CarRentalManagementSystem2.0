@@ -5,10 +5,10 @@ import {
   getReservationsByCustomerIdService,
   updateReservationService,
   deleteReservationService
-} from "../services/reservation.service";
+} from "../../services/reservation.service";
 
-import db from "../Drizzle/db";
-import { ReservationTable } from "../Drizzle/schema";
+import db from "../../Drizzle/db";
+import { ReservationTable } from "../../Drizzle/schema";
 
 jest.mock("../Drizzle/db", () => ({
   insert: jest.fn(),
