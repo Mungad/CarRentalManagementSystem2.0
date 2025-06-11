@@ -5,10 +5,10 @@ import {
   getPaymentsByBookingIdService,
   updatePaymentService,
   deletePaymentService
-} from "../services/payment.service";
+} from "../../services/payment.service";
 
-import db from "../Drizzle/db";
-import { PaymentTable } from "../Drizzle/schema";
+import db from "../../Drizzle/db";
+import { PaymentTable } from "../../Drizzle/schema";
 
 jest.mock("../Drizzle/db", () => ({
   insert: jest.fn(),

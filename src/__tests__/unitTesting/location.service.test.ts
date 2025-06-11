@@ -5,10 +5,10 @@ import {
   getLocationByIdService,
   updateLocationService,
   deleteLocationService
-} from "../services/location.service";
+} from "../../services/location.service";
 
-import db from "../Drizzle/db";
-import { LocationTable } from "../Drizzle/schema";
+import db from "../../Drizzle/db";
+import { LocationTable } from "../../Drizzle/schema";
 
 jest.mock("../Drizzle/db", () => ({
   insert: jest.fn(),

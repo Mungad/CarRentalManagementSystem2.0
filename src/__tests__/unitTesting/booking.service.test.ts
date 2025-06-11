@@ -4,9 +4,9 @@ import {
   getBookingByIdService,
   updateBookingService,
   deleteBookingService
-} from "../services/booking.service";
-import db from "../Drizzle/db";
-import { BookingsTable } from "../Drizzle/schema";
+} from "../../services/booking.service";
+import db from "../../Drizzle/db";
+import { BookingsTable } from "../../Drizzle/schema";
 
 jest.mock("../Drizzle/db", () => ({
   insert: jest.fn(),

@@ -4,9 +4,9 @@ import {
   getCarByIdService,
   updateCarService,
   deleteCarService,
-} from "../services/car.service";
-import db from "../Drizzle/db";
-import { CarTable } from "../Drizzle/schema";
+} from "../../services/car.service";
+import db from "../../Drizzle/db";
+import { CarTable } from "../../Drizzle/schema";
 
 // mock the modules
 jest.mock("../Drizzle/db", () => ({

@@ -9,9 +9,9 @@ import {
   getCustomerByEmailService,
   updateCustomerService,
   deleteCustomerService
-} from "../services/auth.service";
-import db from "../Drizzle/db";
-import { CustomerTable, TICustomer, TSCustomer } from "../Drizzle/schema";
+} from "../../services/auth.service";
+import db from "../../Drizzle/db";
+import { CustomerTable, TICustomer, TSCustomer } from "../../Drizzle/schema";
 
 jest.mock("../Drizzle/db", () => ({
   insert: jest.fn(),

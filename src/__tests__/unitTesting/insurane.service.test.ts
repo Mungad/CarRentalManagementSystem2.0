@@ -4,10 +4,10 @@ import {
   getInsuranceByIdService,
   updateInsuranceService,
   deleteInsuranceService
-} from "../services/insurance.service";
+} from "../../services/insurance.service";
 
-import db from "../Drizzle/db";
-import { InsuranceTable } from "../Drizzle/schema";
+import db from "../../Drizzle/db";
+import { InsuranceTable } from "../../Drizzle/schema";
 
 jest.mock("../Drizzle/db", () => ({
   insert: jest.fn(),
