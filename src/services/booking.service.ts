@@ -3,8 +3,8 @@ import db from "../Drizzle/db";
 import { TIBooking, BookingsTable } from "../Drizzle/schema";
 
 export const createBookingService = async (booking: TIBooking) => {
-  await db.insert(BookingsTable).values(booking).returning();
-  return "Booking added successfully";
+  const [created] = await db.insert(BookingsTable).values(booking).returning();
+  return created;
 };
 
 export const getBookingService = async () => {
@@ -32,6 +32,6 @@ export const updateBookingService = async (id: number, booking: TIBooking) => {
 };
 
 export const deleteBookingService = async (id: number) => {
-  const deleted = await db.delete(BookingsTable).where(eq(BookingsTable.bookingID, id)).returning();
-  return deleted[0];
+  const [deleted] = await db.delete(BookingsTable).where(eq(BookingsTable.bookingID, id)).returning();
+  return deleted;
 };

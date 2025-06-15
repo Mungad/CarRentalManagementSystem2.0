@@ -56,7 +56,7 @@ const reservation = (app: Express) => {
   );
 
   app.route("/reservation/:id").put(
-    adminRoleAuth,
+    bothRoleAuth,
     async (req, res, next) => {
       try {
         await updateReservationController(req, res);
@@ -67,7 +67,7 @@ const reservation = (app: Express) => {
   );
 
   app.route("/reservation/:id").delete(
-    userRoleAuth,
+    bothRoleAuth,
     async (req, res, next) => {
       try {
         await deleteReservationController(req, res);

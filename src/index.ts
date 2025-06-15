@@ -12,6 +12,7 @@ import booking from './router/booking.router';
 //import user from './auth/auth.router';
 //import carRoutes from './router/car.router';
 
+const initializeApp = () => {
 const app = express();
 app.use(express.json()); //used to parse JSON bodies
 
@@ -31,6 +32,11 @@ app.get('/', (_req, res) => {
     res.send('Car Rental Management System API is running!');
 })
 
-app.listen(8081, () => {
-    console.log('Server is running on http://localhost:8081');
-}) 
+return app;
+}
+const app = initializeApp();
+export default app;
+
+// app.listen(8081, () => {
+//     console.log('Server is running on http://localhost:8081');
+// }) 

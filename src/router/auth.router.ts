@@ -36,7 +36,7 @@ const customer = (app: Express) => {
 
     // login user route
     app.route("/auth/login").post(
-        bothRoleAuth,
+        //bothRoleAuth,
         async (req, res, next) => {
             try {
                 await loginCustomerController(req, res);

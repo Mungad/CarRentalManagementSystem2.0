@@ -30,7 +30,9 @@ const payment = (app: Express) => {
     }
   });
 
-  app.route("/payment/:id").get(async (req, res, next) => {
+  app.route("/payment/:id").get(
+    userRoleAuth,
+    async (req, res, next) => {
     try {
       await getPaymentByIdController(req, res);
     } catch (error: any) {
@@ -49,7 +51,7 @@ const payment = (app: Express) => {
   });
 
   app.route("/payment/:id").put(
-    adminRoleAuth,
+    bothRoleAuth,
     async (req, res, next) => {
     try {
       await updatePaymentController(req, res);

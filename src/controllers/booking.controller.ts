@@ -6,7 +6,7 @@ export const createBookingController = async (req: Request, res: Response) => {
     const booking = req.body;
     const created = await createBookingService(booking);
     if (!created) return res.json({ message: "Booking not created" });
-    return res.status(201).json({ message: created });
+    return res.status(201).json({ message: "Booking added successfully" , data: created});
   } catch (error: any) {
     return res.status(500).json({ error: error.message });
   }
@@ -79,7 +79,7 @@ export const deleteBookingController = async (req: Request, res: Response) => {
     const deleted = await deleteBookingService(id);
     if (!deleted) return res.status(400).json({ message: "Booking not deleted" });
 
-    return res.status(204).json({ message: "Booking deleted successfully" });
+    return res.status(200).json({ message: "Booking deleted successfully"});
   } catch (error: any) {
     return res.status(500).json({ error: error.message });
   }

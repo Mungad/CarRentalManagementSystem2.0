@@ -6,7 +6,7 @@ export const createReservationController = async (req: Request, res: Response) =
     const reservation = req.body;
     const created = await createReservationService(reservation);
     if (!created) return res.json({ message: "Reservation not created" });
-    return res.status(201).json({ message: created });
+    return res.status(201).json({ message:"Reservation added successfully", data: created });
   } catch (error: any) {
     return res.status(500).json({ error: error.message });
   }

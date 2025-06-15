@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.59% </span>
+                <span class="strong">55.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/27</span>
+                <span class='fraction'>15/27</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.47% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/21</span>
+                <span class='fraction'>9/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,20 +104,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -128,32 +121,39 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { eq } from "drizzle-orm";
 import db from "../Drizzle/db";
 import { TIBooking, BookingsTable } from "../Drizzle/schema";
 &nbsp;
-export const createBookingService = async (booking: TIBooking) =&gt; {
-  await db.insert(BookingsTable).values(booking).returning();
-  return "Booking added successfully";
+export const createBookingService = <span class="fstat-no" title="function not covered" >async </span>(booking: TIBooking) =&gt; {
+  const [created] = <span class="cstat-no" title="statement not covered" >await db.insert(BookingsTable).values(booking).returning();</span>
+<span class="cstat-no" title="statement not covered" >  return created;</span>
 };
 &nbsp;
-export const getBookingService = async () =&gt; {
-  const bookings = await db.select().from(BookingsTable);
-  return bookings;
+export const getBookingService = <span class="fstat-no" title="function not covered" >async </span>() =&gt; {
+  const bookings = <span class="cstat-no" title="statement not covered" >await db.select().from(BookingsTable);</span>
+<span class="cstat-no" title="statement not covered" >  return bookings;</span>
 };
 &nbsp;
-export const getBookingByIdService = async (id: number) =&gt; {
-  const booking = await db.query.BookingsTable.findFirst({
+export const getBookingByIdService = <span class="fstat-no" title="function not covered" >async </span>(id: number) =&gt; {
+  const booking = <span class="cstat-no" title="statement not covered" >await db.query.BookingsTable.findFirst({</span>
     where: eq(BookingsTable.bookingID, id),
   });
-  return booking;
+<span class="cstat-no" title="statement not covered" >  return booking;</span>
 };
 &nbsp;
 export const getBookingssByCustomerIdService = <span class="fstat-no" title="function not covered" >async </span>(customerId: number) =&gt; {
@@ -163,14 +163,14 @@ export const getBookingssByCustomerIdService = <span class="fstat-no" title="fun
 <span class="cstat-no" title="statement not covered" >  return reservations;</span>
 };
 &nbsp;
-export const updateBookingService = async (id: number, booking: TIBooking) =&gt; {
-  await db.update(BookingsTable).set(booking).where(eq(BookingsTable.bookingID, id)).returning();
-  return "Booking updated successfully";
+export const updateBookingService = <span class="fstat-no" title="function not covered" >async </span>(id: number, booking: TIBooking) =&gt; {
+<span class="cstat-no" title="statement not covered" >  await db.update(BookingsTable).set(booking).where(eq(BookingsTable.bookingID, id)).returning();</span>
+<span class="cstat-no" title="statement not covered" >  return "Booking updated successfully";</span>
 };
 &nbsp;
-export const deleteBookingService = async (id: number) =&gt; {
-  const deleted = await db.delete(BookingsTable).where(eq(BookingsTable.bookingID, id)).returning();
-  return deleted[0];
+export const deleteBookingService = <span class="fstat-no" title="function not covered" >async </span>(id: number) =&gt; {
+  const [deleted] = <span class="cstat-no" title="statement not covered" >await db.delete(BookingsTable).where(eq(BookingsTable.bookingID, id)).returning();</span>
+<span class="cstat-no" title="statement not covered" >  return deleted;</span>
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -178,7 +178,7 @@ export const deleteBookingService = async (id: number) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-11T06:32:13.714Z
+                at 2025-06-13T13:54:06.813Z
             </div>
         <script src="../prettify.js"></script>
         <script>

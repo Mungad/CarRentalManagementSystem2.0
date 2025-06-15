@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.34% </span>
+                <span class="strong">36.2% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/58</span>
+                <span class='fraction'>21/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/12</span>
+                <span class='fraction'>2/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">36.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>28/44</span>
+                <span class='fraction'>16/44</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -264,11 +264,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -276,25 +276,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -310,6 +296,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -399,12 +399,12 @@ import { Request, Response } from "express";
 import { createCarService, getCarService, getCarByIdService, updateCarService, deleteCarService } from '../services/car.service';
 &nbsp;
 // create car controller
-export const createCarController = async (req: Request, res: Response) =&gt; {
-  try {
-    const car = req.body;
-    const created = await createCarService(car);
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!created) <span class="cstat-no" title="statement not covered" >return res.json({ message: "Car not created" });</span>
-    return res.status(201).json({ message: created });
+export const createCarController = <span class="fstat-no" title="function not covered" >async </span>(req: Request, res: Response) =&gt; {
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    const car = <span class="cstat-no" title="statement not covered" >req.body;</span>
+    const created = <span class="cstat-no" title="statement not covered" >await createCarService(car);</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!created) <span class="cstat-no" title="statement not covered" >return res.json({ message: "Car not created" });</span></span>
+<span class="cstat-no" title="statement not covered" >    return res.status(201).json({ message: created });</span>
   } catch (error: any) {
 <span class="cstat-no" title="statement not covered" >    return res.status(500).json({ error: error.message });</span>
   }
@@ -417,9 +417,9 @@ export const getCarController = async (req: Request, res: Response) =&gt; {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!cars || cars.length === 0) {
 <span class="cstat-no" title="statement not covered" >      return res.status(404).json({ message: "No cars found" });</span>
     }
-    return res.status(200).json({ data: cars });
+    return res.status(200).json(cars);
   } catch (error: any) {
-    return res.status(500).json({ error: error.message });
+<span class="cstat-no" title="statement not covered" >    return res.status(500).json({ error: error.message });</span>
   }
 };
 &nbsp;
@@ -430,7 +430,7 @@ export const getCarByIdController = async (req: Request, res: Response) =&gt; {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(id)) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ message: "Invalid ID" });</span>
 &nbsp;
     const car = await getCarByIdService(id);
-    if (!car) return res.status(404).json({ message: "Car not found" });
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!car) <span class="cstat-no" title="statement not covered" >return res.status(404).json({ message: "Car not found" });</span>
     return res.status(200).json({ data: car });
   } catch (error: any) {
 <span class="cstat-no" title="statement not covered" >    return res.status(500).json({ error: error.message });</span>
@@ -438,14 +438,14 @@ export const getCarByIdController = async (req: Request, res: Response) =&gt; {
 };
 &nbsp;
 // update car by id controller
-export const updateCarController = async (req: Request, res: Response) =&gt; {
-  try {
-    const id = parseInt(req.params.id);
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(id)) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ message: "Invalid ID" });</span>
+export const updateCarController = <span class="fstat-no" title="function not covered" >async </span>(req: Request, res: Response) =&gt; {
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    const id = <span class="cstat-no" title="statement not covered" >parseInt(req.params.id);</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(id)) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ message: "Invalid ID" });</span></span>
 &nbsp;
-    const car = req.body;
-    const existingCar = await getCarByIdService(id);
-    if (!existingCar) return res.status(404).json({ message: "Car not found" });
+    const car = <span class="cstat-no" title="statement not covered" >req.body;</span>
+    const existingCar = <span class="cstat-no" title="statement not covered" >await getCarByIdService(id);</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!existingCar) <span class="cstat-no" title="statement not covered" >return res.status(404).json({ message: "Car not found" });</span></span>
 &nbsp;
     const updated = <span class="cstat-no" title="statement not covered" >await updateCarService(id, car);</span>
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!updated) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ message: "Car not updated" });</span></span>
@@ -478,7 +478,7 @@ export const deleteCarController = <span class="fstat-no" title="function not co
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-09T13:53:03.760Z
+                at 2025-06-12T03:59:13.068Z
             </div>
         <script src="../prettify.js"></script>
         <script>

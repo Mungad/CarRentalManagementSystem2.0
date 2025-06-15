@@ -20,7 +20,7 @@ const car = (app: Express) => {
   });
 
   app.route("/cars").get(
-    bothRoleAuth,
+    //bothRoleAuth,
     async (req, res, next) => {
     try {
       await getCarController(req, res);
@@ -30,7 +30,7 @@ const car = (app: Express) => {
   });
 
   app.route("/car/:id").get(
-    adminRoleAuth,
+    //adminRoleAuth,
     async (req, res, next) => {
     try {
       await getCarByIdController(req, res);
