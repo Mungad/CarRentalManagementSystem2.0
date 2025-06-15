@@ -1,6 +1,6 @@
 import request from 'supertest';
 import bcrypt from 'bcryptjs';
-import app from '../../../src';
+import app from '../..';
 import db from '../../Drizzle/db'
 import { CustomerTable } from '../../Drizzle/schema';
 import { eq } from 'drizzle-orm';
@@ -17,6 +17,8 @@ const testCustomer = {
     role: "admin",
     isVerified: true
 };
+
+
 
 beforeAll(async () => {
      await db.delete(CustomerTable);

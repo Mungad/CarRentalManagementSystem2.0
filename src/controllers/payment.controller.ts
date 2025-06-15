@@ -56,13 +56,15 @@ export const updatePaymentController = async (req: Request, res: Response) => {
     if (isNaN(id)) return res.status(400).json({ message: "Invalid ID" });
 
     const updated = await updatePaymentService(id, req.body);
-    if (!updated) return res.status(400).json({ message: "Payment not updated" });
+    
+    if (!updated) return res.status(404).json({ message: "Payment not found" });
 
     return res.status(200).json({ message: "Payment updated successfully" });
   } catch (error: any) {
     return res.status(500).json({ error: error.message });
   }
-}
+};
+
 
 export const deletePaymentController = async (req: Request, res: Response) => {
   try {

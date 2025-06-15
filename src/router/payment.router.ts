@@ -31,7 +31,7 @@ const payment = (app: Express) => {
   });
 
   app.route("/payment/:id").get(
-    userRoleAuth,
+    bothRoleAuth,
     async (req, res, next) => {
     try {
       await getPaymentByIdController(req, res);

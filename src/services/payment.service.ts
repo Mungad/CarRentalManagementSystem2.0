@@ -27,9 +27,19 @@ export const getPaymentsByBookingIdService = async (bookingId: number) => {
 };
 
 export const updatePaymentService = async (id: number, payment: TIPayment) => {
-  await db.update(PaymentTable).set(payment).where(eq(PaymentTable.paymentID, id)).returning();
-  return "Payment updated successfully";
+  const result = await db
+    .update(PaymentTable)
+    .set(payment)
+    .where(eq(PaymentTable.paymentID, id))
+    .returning();
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  return result[0];
 };
+
 
 export const deletePaymentService = async (id: number) => {
   const deleted = await db.delete(PaymentTable).where(eq(PaymentTable.paymentID, id)).returning();

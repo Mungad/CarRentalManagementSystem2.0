@@ -1,14 +1,15 @@
 import request from "supertest";
-import app from "../../../src";
+import app from "../..";
 import db from "../../Drizzle/db";
 import bcrypt from "bcryptjs";
-import { CustomerTable, MaintenanceTable, CarTable } from "../../Drizzle/schema";
+import { CustomerTable, MaintenanceTable, CarTable, LocationTable} from "../../Drizzle/schema";
 import { eq } from "drizzle-orm";
 
 let adminToken: string;
 let customerToken: string;
 let adminId: number;
 let customerId: number;
+let testLocationId: number;
 let testMaintenanceId: number;
 let testCarId: number;
 
@@ -35,6 +36,10 @@ const customerUser = {
 };
 
 beforeAll(async () => {
+  await db.delete(CustomerTable);
+  await db.delete(MaintenanceTable);
+  await db.delete(CarTable);
+  await db.delete(LocationTable);
   const hashedAdminPassword = bcrypt.hashSync(adminUser.password, 10);
   const [admin] = await db
     .insert(CustomerTable)
@@ -59,6 +64,17 @@ beforeAll(async () => {
     .send({ email: customerUser.email, password: customerUser.password });
   customerToken = customerLogin.body.token;
 
+  //Create test location
+  const [location] = await db
+    .insert(LocationTable)
+    .values({
+      locationName: "Reservation Test Location",
+      address: "123 Reservation St",
+      contactNumber: "0700112233",
+    })
+    .returning();
+  testLocationId = location.locationID;
+
   // Create a test car for maintenance
   const [car] = await db
   .insert(CarTable)
@@ -68,7 +84,7 @@ beforeAll(async () => {
     color: "White",
     rentalRate: "5000.00", // as string to match decimal type
     availability: true,
-    locationID: 1, // Ensure this ID exists or was inserted beforehand
+    locationID: testLocationId,
   })
   .returning();
   testCarId = car.carID;
@@ -80,6 +96,9 @@ afterAll(async () => {
   }
   if (testCarId) {
     await db.delete(CarTable).where(eq(CarTable.carID, testCarId));
+  }
+  if (testLocationId) {
+    await db.delete(CarTable).where(eq(CarTable.locationID, testLocationId));
   }
   await db.delete(CustomerTable).where(eq(CustomerTable.customerID, adminId));
   await db.delete(CustomerTable).where(eq(CustomerTable.customerID, customerId));

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/27</span>
+                <span class='fraction'>27/27</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,73 +104,73 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { eq } from "drizzle-orm";
 import db from "../Drizzle/db";
 import { TIReservation, ReservationTable } from "../Drizzle/schema";
 &nbsp;
-export const createReservationService = <span class="fstat-no" title="function not covered" >async </span>(reservation: TIReservation) =&gt; {
-  const [created] = <span class="cstat-no" title="statement not covered" >await db.insert(ReservationTable).values(reservation).returning();</span>
-<span class="cstat-no" title="statement not covered" >  return created; </span>
+export const createReservationService = async (reservation: TIReservation) =&gt; {
+  const [created] = await db.insert(ReservationTable).values(reservation).returning();
+  return created; 
 };
 &nbsp;
-export const getReservationService = <span class="fstat-no" title="function not covered" >async </span>() =&gt; {
-  const reservations = <span class="cstat-no" title="statement not covered" >await db.select().from(ReservationTable);</span>
-<span class="cstat-no" title="statement not covered" >  return reservations;</span>
+export const getReservationService = async () =&gt; {
+  const reservations = await db.select().from(ReservationTable);
+  return reservations;
 };
 &nbsp;
-export const getReservationByIdService = <span class="fstat-no" title="function not covered" >async </span>(id: number) =&gt; {
-  const reservation = <span class="cstat-no" title="statement not covered" >await db.query.ReservationTable.findFirst({</span>
+export const getReservationByIdService = async (id: number) =&gt; {
+  const reservation = await db.query.ReservationTable.findFirst({
     where: eq(ReservationTable.reservationID, id),
   });
-<span class="cstat-no" title="statement not covered" >  return reservation;</span>
+  return reservation;
 };
 &nbsp;
-export const getReservationsByCustomerIdService = <span class="fstat-no" title="function not covered" >async </span>(customerId: number) =&gt; {
-  const reservations = <span class="cstat-no" title="statement not covered" >await db.query.ReservationTable.findMany({</span>
+export const getReservationsByCustomerIdService = async (customerId: number) =&gt; {
+  const reservations = await db.query.ReservationTable.findMany({
     where: eq(ReservationTable.customerID, customerId),
   });
-<span class="cstat-no" title="statement not covered" >  return reservations;</span>
+  return reservations;
 };
 &nbsp;
-export const updateReservationService = <span class="fstat-no" title="function not covered" >async </span>(id: number, reservation: TIReservation) =&gt; {
-<span class="cstat-no" title="statement not covered" >  await db.update(ReservationTable).set(reservation).where(eq(ReservationTable.reservationID, id)).returning();</span>
-<span class="cstat-no" title="statement not covered" >  return "Reservation updated successfully";</span>
+export const updateReservationService = async (id: number, reservation: TIReservation) =&gt; {
+  await db.update(ReservationTable).set(reservation).where(eq(ReservationTable.reservationID, id)).returning();
+  return "Reservation updated successfully";
 };
 &nbsp;
-export const deleteReservationService = <span class="fstat-no" title="function not covered" >async </span>(id: number) =&gt; {
-  const deleted = <span class="cstat-no" title="statement not covered" >await db.delete(ReservationTable).where(eq(ReservationTable.reservationID, id)).returning();</span>
-<span class="cstat-no" title="statement not covered" >  return deleted[0];</span>
+export const deleteReservationService = async (id: number) =&gt; {
+  const deleted = await db.delete(ReservationTable).where(eq(ReservationTable.reservationID, id)).returning();
+  return deleted[0];
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -178,7 +178,7 @@ export const deleteReservationService = <span class="fstat-no" title="function n
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-13T13:56:52.815Z
+                at 2025-06-15T22:40:36.518Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

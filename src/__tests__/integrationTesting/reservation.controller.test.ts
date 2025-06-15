@@ -2,7 +2,7 @@ import request from "supertest";
 import { eq } from "drizzle-orm";
 import db from "../../Drizzle/db";
 import { CustomerTable, CarTable, ReservationTable,   LocationTable } from "../../Drizzle/schema";
-import app from "../../../src"; 
+import app from "../.."; 
 import bcrypt from "bcryptjs";
 
 let adminToken: string;
